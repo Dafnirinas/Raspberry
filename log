@@ -1,0 +1,4 @@
+/usr/local/bin/mico-c++ -o wateringsystem_impl.o wateringsystem_impl.cpp -c -g -I.
+wateringsystem_impl.cpp: In member function ‘virtual CORBA::Any* WateringSystem_impl::sendMsgByStrOnPort(const char*, CORBA::UShort)’:
+wateringsystem_impl.cpp:223:40: warning: ‘string’ is used uninitialized in this function [-Wuninitialized]
+/usr/local/bin/mico-c++ -g -o wateringsystem client.o corbainit.o eventchannelServer.o initserver.o main.o pullconsumer_impl.o pullsupplier_impl.o pushconsumer_impl.o pushsupplier_impl.o wateringsystem_impl.o Watering.o -L/usr/local/lib -lmico2.3.13 -lmicoaux2.3.13 -lmicocoss2.3.13 -lmicoir2.3.13 -lserial -lpthread -ldl

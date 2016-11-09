@@ -1,0 +1,56 @@
+interface WateringSystem {
+    boolean addSerialPort(in string name, in unsigned short portNumber); // Добавить и сконфигурировать порт под номером portNumber
+    boolean createEventChannel(in string id, in string kind);
+    string getEventChannelFactoryId();
+    string getEventChannelFactoryKind();
+    string getEventChannels();
+    string getDevices();
+    boolean addPoint(in string id, in string kind); // Добавить точку в NamingService
+    any addDevice(in string id, in string kind, in unsigned short pin, in unsigned short type, in unsigned short serialPort);
+    any deleteDevice(in string id);
+
+    any connectToChannelStrategy(in string devId, in string devKind, in string chanId, in string chanKind,in unsigned short role);
+
+    /* Прямые запросы к контроллеру */
+    any sendMsgByStrOnPort(in string str, in unsigned short portNumber);
+    any sendMsgForStatusRequestByName(in string str);
+    any sendMsgForSetParameterByName(in string str, in unsigned short par);
+    any sendMsgForAllStatusOnPort( in unsigned short portNumber);
+    any sendMsgLoadDeviceConfigOnPort( in unsigned short portNumber);
+    any sendMsgForSaveDeviceConfigOnPort( in unsigned short portNumber);
+    /*!!! Прямые запросы к контроллеру */
+
+    /* Косвенные запросы к контроллеру */
+
+    /*!!! Косвенные запросы к контроллеру */
+
+    /* Служебное */
+    void poaManagerActivate();
+    void ORBRun();
+    void POADestroy();
+
+    /*!!! Служебное */
+//	string getFlowersState(); // Вернуть состояние всех цветов
+//	string getDevicesState(); // Вернуть состояние всех приборов
+//	string getAdvState(in string adv); // Вернуть состояние конкретного прибора
+//	string getFlowerState(in string flowerName); // Вернуть состояние конкретного цветка
+//	boolean waterFlower(in string flowerName); // Полить цветок flowerName
+//	boolean getWaterLvl(); // Проверить уровень воды
+//      string sendRequestByStr(in string str); // Запрос с параметром
+//        string getFlowerStates(); // Проверка состояния всех цветков
+//        string getWaterLvls();	// Проверка состояния резервуаров с водой
+};
+
+interface WateringSystems {
+        boolean create(in string wsName);
+	string getFlowerStates(); // Проверка состояния всех цветков
+        string getWaterLvls();	// Проверка состояния резервуаров с водой
+};
+
+interface Device {
+    string sendMessageByStr(in string str); // Запрос с параметром
+    boolean addDevice(in string id, in string kind);
+    boolean deleteDevice(in string id, in string kind);
+    string sendLineForStatusRequest();
+};
+
